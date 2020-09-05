@@ -1,29 +1,25 @@
 sudo: required
 services:
     - docker
-env:
-    global:
-      - SHA=$(git rev-parse HEAD)
-      - CLOUDSDK_CORE_DISABLE_PROMPTS=1
 
 before_install:
 
-  - docker build -t JayneJacobs/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t jaynejacobs/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-    - docker run -e CI=true JayneJacobs/react-test npm test
+    - docker run -e CI=true jaynejacobs/react-test npm test
   
 after_succes:
-    - docker build -t JayneJacobs/multi-client ./client
-    - docker build -t JayneJacobs/multi-nginx ./nginx
-    - docker build -t JayneJacobs/multi-server ./server
-    - docker build -t JayneJacobs/multi-worker ./worker
+    - docker build -t jaynejacobs/multi-client ./client
+    - docker build -t jaynejacobs/multi-nginx ./nginx
+    - docker build -t jaynejacobs/multi-server ./server
+    - docker build -t jaynejacobs/multi-worker ./worker
     # Log in to docker
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-    - docker push JayneJacobs/multi-client
-    - docker push JayneJacobs/multi-nginx 
-    - docker push JayneJacobs/multi-server
-    - docker push JayneJacobs/multi-worker
+    - docker push jaynejacobs/multi-client
+    - docker push jaynejacobs/multi-nginx 
+    - docker push jaynejacobs/multi-server
+    - docker push jaynejacobs/multi-worker
  
 deploy:
   provider: script
