@@ -2,28 +2,28 @@
     "AWSEBDockerrunVersion": 2,
     "ContainerDefinitions": [
         {
-            "Name": "server",
-            "Image": "JayneJacobs/multi-server",
-            "hostname": "api",
-            "Essential": false,
-            "memory": 128
-        },
-        {
             "Name": "client",
-            "Image": "JayneJacobs/multi-client",
+            "Image": "jaynejacobs/multi-client",
             "hostname": "client",
             "Essential": false,
             "memory": 128
         },
         {
+            "Name": "server",
+            "Image": "jaynejacobs/multi-server",
+            "hostname": "api",
+            "Essential": false,
+            "memory": 128
+        },
+        {
             "Name": "worker",
-            "Image": "JayneJacobs/multi-worker",
+            "Image": "jaynejacobs/multi-worker",
             "Essential": false,
             "memory": 128
         },
         {
             "Name": "nginxr",
-            "Image": "JayneJacobs/multi-nginx",
+            "Image": "jaynejacobs/multi-nginx",
             "Essential": true,
             "portMappins": [
                 {
