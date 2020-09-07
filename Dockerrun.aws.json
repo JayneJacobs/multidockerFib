@@ -2,9 +2,16 @@
     "AWSTemplateFormatVersion": "2010-09-09",
     "ContainerDefinitions": [
         {
+            "Name": "server",
+            "Image": "JayneJacobs/multi-client",
+            "hostname": "client",
+            "Essential": false
+        }
+        {
             "Name": "client",
             "Image": "JayneJacobs/multiclient",
-        ],
-    }
-]
+            "hostname": "client",
+            "Essential": false
+        }
+    ]
 }

@@ -21,9 +21,4 @@ after_succes:
     - docker push jaynejacobs/multi-server
     - docker push jaynejacobs/multi-worker
  
-deploy:
-  provider: script
-  script: bash ./deploy.sh
-  on:
-    branch: master
 
