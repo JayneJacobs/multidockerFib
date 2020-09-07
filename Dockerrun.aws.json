@@ -18,6 +18,7 @@
         {
             "name": "worker",
             "image": "jaynejacobs/multi-worker",
+            "hostname": "worker",
             "essential": false,
             "memory": 128
         },
@@ -26,7 +27,7 @@
             "image": "jaynejacobs/multi-nginx",
             "hostname": "nginx",
             "essential": true,
-            "portMappins": [
+            "portMappings": [
                 {
                     "hostPort": 80,
                     "containerPort": 80
