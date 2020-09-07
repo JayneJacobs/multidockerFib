@@ -21,4 +21,14 @@ after_succes:
     - docker push jaynejacobs/multi-server
     - docker push jaynejacobs/multi-worker
  
-
+deploy:
+  edge: true
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "multiocker"
+  env: "MultiDocker-env"
+  bucket_name: "elasticbeanstalk-us-west-2-306476627547"
+  bucket_path: "docker-multi"
+  secret_access_key:
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY

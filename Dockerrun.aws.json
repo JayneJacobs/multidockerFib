@@ -3,15 +3,35 @@
     "ContainerDefinitions": [
         {
             "Name": "server",
+            "Image": "JayneJacobs/multi-server",
+            "hostname": "api",
+            "Essential": false
+        },
+        {
+            "Name": "client",
             "Image": "JayneJacobs/multi-client",
             "hostname": "client",
             "Essential": false
-        }
+        },
         {
-            "Name": "client",
-            "Image": "JayneJacobs/multiclient",
-            "hostname": "client",
+            "Name": "worker",
+            "Image": "JayneJacobs/multi-worker",
             "Essential": false
+        },
+        {
+            "Name": "nginxr",
+            "Image": "JayneJacobs/multi-nginx",
+            "Essential": true,
+            "portMappins": [
+                {
+                    "hostPort": 80,
+                    "containerPort": 80
+                }
+            ],
+            "links": [
+                "client",
+                "server"
+            ]
         }
     ]
 }
