@@ -10,10 +10,11 @@ script:
     - docker run -e CI=true jaynejacobs/react-test npm test
   
 after_succes:
-    - docker build -t jaynejacobs/multi-client ./client
+   
     - docker build -t jaynejacobs/multi-nginx ./nginx
     - docker build -t jaynejacobs/multi-server ./server
     - docker build -t jaynejacobs/multi-worker ./worker
+    - docker build -t jaynejacobs/multi-client ./client
     # Log in to docker
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
     # Take those images and push them to docker hub
@@ -26,10 +27,10 @@ deploy:
   edge: true
   provider: elasticbeanstalk
   region: "us-east-2"
-  app: "docker-multi"
+  app: "multi-docker"
   env: "MultiDocker-env"
   bucket_name: "elasticbeanstalk-us-east-2-636373265450"
-  bucket_path: "docker-multi"
+  bucket_path: "multi-docker"
   on:
     branch: master
   access_key_id: $AWS_ACCESS_KEY
