@@ -16,10 +16,11 @@ after_succes:
     - docker build -t jaynejacobs/multi-worker ./worker
     # Log in to docker
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-    - docker push jaynejacobs/multi-client
+    # Take those images and push them to docker hub
     - docker push jaynejacobs/multi-nginx 
     - docker push jaynejacobs/multi-server
     - docker push jaynejacobs/multi-worker
+    - docker push jaynejacobs/multi-client
  
 deploy:
   edge: true
@@ -29,6 +30,8 @@ deploy:
   env: "MultiDocker-env"
   bucket_name: "elasticbeanstalk-us-west-2-306476627547"
   bucket_path: "docker-multi"
+  on:
+    branch: master
   secret_access_key:
     access_key_id: $AWS_ACCESS_KEY
     secret_access_key: $AWS_SECRET_KEY
