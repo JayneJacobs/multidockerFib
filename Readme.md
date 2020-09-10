@@ -68,3 +68,11 @@ git push origin master
 TaskDefinition 
 
 https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definitions
+
+## K8s
+
+[Link to deployments](docs/K8s/Readme.md)
+
+### logs
+kubectl get pods 
+kubectl logs client-deployment-686d59754b-kf5b9

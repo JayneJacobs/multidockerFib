@@ -93,3 +93,17 @@ After making all of these changes make sure to run:
 docker-compose down  && docker-compose up --build
 
 Please note, all of these changes are reflected in the downloadable checkpoint zip files.
+
+ ## Not all items can be updated. some need to create new containers
+ pod updates may not change fields other than `spec.containers. Ex. port numbers in container spec. 
+ 
+ 
+ [*].image`, `spec.initContainers[*].image`, `spec.activeDeadlineSeconds` or `spec.tolerations` (only additions to existing tolerations)
+
+ ![Cantupdate](K8sdocs/CantUpdate.png)
+
+ ![Object Types](K8sdocs/Objecttypes.png)
+
+ ## Deployment has pod template
+
+ 
